@@ -26,6 +26,7 @@ std::string getServerDir()
     #endif
     std::string str(buf);
     delete [] buf;
+    logprintf("  [SCLib] call getServerDir(): %s",str.c_str());
     return str;
 }
 
@@ -37,7 +38,7 @@ void _downloadFile(std::string url)
 
     std::string output=url;
     output.erase(0,output.find_last_of('/')+1);
-    logprintf("  [SCLib] Downloading file: %s",output.c_str());
+    logprintf("  [SCLib] Downloading file \"%s\"",output.c_str());
 
     curl=curl_easy_init();
     if(curl)
