@@ -20,7 +20,7 @@ std::string getServerDir()
 {
     char * buf=new char[128];
     #ifdef LINUX
-        readlink("/proc/self/exe",buf,128);
+    readlink("/proc/self/exe",buf,128);
     #elif defined WIN32
 
     #endif
