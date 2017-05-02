@@ -5,3 +5,4 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES main.cpp)
 add_library(SCLib SHARED ${SOURCE_FILES})
+set( CMAKE_CXX_FLAGS "--def=main.def" )
