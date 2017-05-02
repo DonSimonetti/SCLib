@@ -102,10 +102,10 @@ AMX_NATIVE_INFO PluginNatives[]=
 
 PLUGIN_EXPORT int PLUGIN_CALL AmxLoad(AMX * amx)
 {
-return amx_Register(amx, PluginNatives, -1);
+    return amx_Register(amx, PluginNatives, -1);
 }
 
 PLUGIN_EXPORT int PLUGIN_CALL AmxUnload(AMX * amx)
 {
-return AMX_ERR_NONE;
+    return AMX_ERR_NONE;
 }
