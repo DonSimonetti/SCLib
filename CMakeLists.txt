@@ -5,4 +5,5 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES main.cpp)
 add_library(SCLib SHARED ${SOURCE_FILES})
+add_definitions(-DHAVE_STDINT_H -D__need_size_t)
 set( CMAKE_CXX_FLAGS "--def=main.def" )
