@@ -19,11 +19,11 @@ size_t write_data(void *ptr, size_t size, size_t nmemb, FILE * stream)
 std::string getServerDir()
 {
     char * buf=new char[128];
-#ifdef LINUX
-    readlink("/proc/self/exe",buf,128);
-#elif defined WIN32
+    #ifdef LINUX
+        readlink("/proc/self/exe",buf,128);
+    #elif defined WIN32
 
-#endif
+    #endif
     std::string str(buf);
     delete [] buf;
     return str;
@@ -55,23 +55,23 @@ void _downloadFile(std::string url)
 
 cell AMX_NATIVE_CALL downloadFile(AMX * amx, cell * params)
 {
-int len=NULL;
-int ret=NULL;
-cell * addr=NULL;
-amx_GetAddr(amx,params[1],&addr);
-amx_StrLen(addr,&len);
-if(len)
-{
-len++;
+    int len=NULL;
+    int ret=NULL;
+    cell * addr=NULL;
+    amx_GetAddr(amx,params[1],&addr);
+    amx_StrLen(addr,&len);
+    if(len)
+    {
+        len++;
 
-char * text=new char[len];
-amx_GetString(text,addr,0,len);
-std::string url(text);
-delete [] text;
-_downloadFile(url);
-return 0;
-}
-return 1;
+        char * text=new char[len];
+        amx_GetString(text,addr,0,len);
+        std::string url(text);
+        delete [] text;
+        _downloadFile(url);
+        return 0;
+    }
+    return 1;
 }
 
 PLUGIN_EXPORT unsigned int PLUGIN_CALL Supports()
